@@ -1,0 +1,17 @@
+# Konfigurasi build Netlify untuk OSJUR 3.0 (Vite + React + TS)
+# netlify.toml meng-override pengaturan di dashboard Netlify.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  # Vite 7 membutuhkan Node >= 20.19 (disarankan 22)
+  NODE_VERSION = "22"
+
+# SPA fallback: file yang benar-benar ada tetap dilayani,
+# path lain dialihkan ke index.html (status 200, bukan 301).
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
