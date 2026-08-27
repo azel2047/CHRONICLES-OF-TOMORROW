@@ -45,7 +45,7 @@ export const members: Member[] = [
     generation: "2024",
     domicile: "Citeureup, Bogor",
     class: null,
-    photo: null,
+    photo: "/images/members/Syifa.png",
     bio: null,
   },
   {
@@ -58,7 +58,7 @@ export const members: Member[] = [
     generation: "2025",
     domicile: "Bekasi",
     class: null,
-    photo: null,
+    photo: "/images/members/Imad.png",
     bio: null,
   },
   {
@@ -71,7 +71,7 @@ export const members: Member[] = [
     generation: "2024",
     domicile: "Bogor",
     class: null,
-    photo: null,
+    photo: "/images/members/Amarsya.png",
     bio: null,
   },
   {
@@ -84,7 +84,7 @@ export const members: Member[] = [
     generation: "2024",
     domicile: "Depok",
     class: null,
-    photo: null,
+    photo: "/images/members/Alam.png",
     bio: null,
   },
   {
@@ -97,7 +97,7 @@ export const members: Member[] = [
     generation: "2025",
     domicile: "Jakarta Timur",
     class: null,
-    photo: null,
+    photo: "/images/members/Alex.png",
     bio: null,
   },
   {
@@ -110,7 +110,7 @@ export const members: Member[] = [
     generation: "2025",
     domicile: "Bogor",
     class: null,
-    photo: null,
+    photo: "/images/members/Kholilah.png",
     bio: null,
   },
   {
@@ -123,7 +123,7 @@ export const members: Member[] = [
     generation: "2025",
     domicile: "Jakarta",
     class: null,
-    photo: null,
+    photo: "/images/members/Adli.png",
     bio: null,
   },
   {
@@ -136,7 +136,7 @@ export const members: Member[] = [
     generation: "2025",
     domicile: "Depok",
     class: null,
-    photo: null,
+    photo: "/images/members/Seno.png",
     bio: null,
   },
   {
@@ -149,7 +149,7 @@ export const members: Member[] = [
     generation: "2025",
     domicile: "Depok",
     class: null,
-    photo: null,
+    photo: "/images/members/Rudi.png",
     bio: null,
   },
   {
@@ -162,7 +162,7 @@ export const members: Member[] = [
     generation: "2024",
     domicile: "Bogor",
     class: null,
-    photo: null,
+    photo: "/images/members/Ulul.png",
     bio: null,
   },
   {
@@ -175,7 +175,7 @@ export const members: Member[] = [
     generation: "2024",
     domicile: "Jakarta",
     class: null,
-    photo: null,
+    photo: "/images/members/Hanif.png",
     bio: null,
   },
   {
@@ -188,7 +188,7 @@ export const members: Member[] = [
     generation: "2024",
     domicile: "Depok",
     class: null,
-    photo: null,
+    photo: "/images/members/Goji.png",
     bio: null,
   },
   {
@@ -201,7 +201,7 @@ export const members: Member[] = [
     generation: "2024",
     domicile: "Bekasi",
     class: null,
-    photo: null,
+    photo: "/images/members/Aul.png",
     bio: null,
   },
   {
@@ -214,7 +214,7 @@ export const members: Member[] = [
     generation: "2024",
     domicile: "Cibinong, Bogor",
     class: null,
-    photo: null,
+    photo: "/images/members/Hafiz.png",
     bio: null,
   },
   {
@@ -227,7 +227,7 @@ export const members: Member[] = [
     generation: "2024",
     domicile: "Depok",
     class: null,
-    photo: null,
+    photo: "/images/members/Fahrezi.png",
     bio: null,
   },
   {
@@ -240,7 +240,7 @@ export const members: Member[] = [
     generation: "2025",
     domicile: "Depok",
     class: null,
-    photo: null,
+    photo: "/images/members/Madu.png",
     bio: null,
   },
   {
@@ -253,7 +253,7 @@ export const members: Member[] = [
     generation: "2025",
     domicile: "Depok",
     class: null,
-    photo: null,
+    photo: "/images/members/Anastasya.png",
     bio: null,
   },
   {
@@ -266,7 +266,7 @@ export const members: Member[] = [
     generation: "2025",
     domicile: "Depok",
     class: null,
-    photo: null,
+    photo: "/images/members/Haidar.png",
     bio: null,
   },
   {
@@ -279,7 +279,7 @@ export const members: Member[] = [
     generation: "2025",
     domicile: "Depok",
     class: null,
-    photo: null,
+    photo: "/images/members/Basyarahil.png",
     bio: null,
   },
   {
@@ -292,7 +292,7 @@ export const members: Member[] = [
     generation: "2025",
     domicile: "Depok",
     class: null,
-    photo: null,
+    photo: "/images/members/Dzaki.png",
     bio: null,
   },
   {
@@ -305,7 +305,7 @@ export const members: Member[] = [
     generation: "2025",
     domicile: "Bogor",
     class: null,
-    photo: null,
+    photo: "/images/members/Lutfi.png",
     bio: null,
   },
   {
@@ -331,7 +331,7 @@ export const members: Member[] = [
     generation: "2024",
     domicile: "Jaksel",
     class: null,
-    photo: null,
+    photo: "/images/members/Kaff.png",
     bio: null,
   },
   {
@@ -383,7 +383,7 @@ export const members: Member[] = [
     generation: "2025",
     domicile: "Depok",
     class: null,
-    photo: null,
+    photo: "/images/members/Renata.png",
     bio: null,
   },
   {
@@ -396,7 +396,7 @@ export const members: Member[] = [
     generation: "2025",
     domicile: "Citayam, Depok",
     class: null,
-    photo: null,
+    photo: "/images/members/Ryu.png",
     bio: null,
   },
   {
@@ -409,7 +409,7 @@ export const members: Member[] = [
     generation: "2025",
     domicile: "Depok",
     class: null,
-    photo: null,
+    photo: "/images/members/Allifah.png",
     bio: null,
   },
   {
@@ -422,7 +422,7 @@ export const members: Member[] = [
     generation: "2024",
     domicile: "Depok",
     class: null,
-    photo: null,
+    photo: "/images/members/Haikal.png",
     bio: null,
   },
   {
@@ -435,7 +435,7 @@ export const members: Member[] = [
     generation: "2024",
     domicile: "Bogor",
     class: null,
-    photo: null,
+    photo: "/images/members/Ammar.PNG",
     bio: null,
   },
   {
@@ -448,7 +448,7 @@ export const members: Member[] = [
     generation: "2024",
     domicile: "Bogor",
     class: null,
-    photo: null,
+    photo: "/images/members/Linda.png",
     bio: null,
   },
   {
@@ -461,7 +461,7 @@ export const members: Member[] = [
     generation: "2025",
     domicile: "Depok",
     class: null,
-    photo: null,
+    photo: "/images/members/Fatier.png",
     bio: null,
   },
   {
@@ -474,7 +474,7 @@ export const members: Member[] = [
     generation: "2025",
     domicile: "Jakarta Selatan",
     class: null,
-    photo: null,
+    photo: "/images/members/Nabila.png",
     bio: null,
   },
   {
@@ -487,7 +487,7 @@ export const members: Member[] = [
     generation: "2025",
     domicile: "Jakarta Pusat",
     class: null,
-    photo: null,
+    photo: "/images/members/Aji.png",
     bio: null,
   },
 ];
