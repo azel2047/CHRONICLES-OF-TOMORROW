@@ -63,6 +63,7 @@ function LeaderCard({ member, featured = false, onViewProfile }: LeaderCardProps
 
 export function Leadership({ onViewProfile }: LeadershipProps) {
   const officer = members.find((m) => m.position === "Project Officer");
+  const steeringCommittee = members.find((m) => m.position === "SC");
   const divisionOrder = (name: string) =>
     divisions.findIndex((d) => d.name === name);
   const piCouncil = members
@@ -87,16 +88,14 @@ export function Leadership({ onViewProfile }: LeadershipProps) {
           </Reveal>
         )}
 
-        <Reveal delay={0.15}>
-          <div className="mx-auto mt-8 max-w-sm rounded-xl border border-dashed border-royal/40 bg-deep/30 px-5 py-4 text-center sm:px-6 sm:py-5">
-            <p className="font-display text-[9px] tracking-[0.35em] text-mist/60 sm:text-[10px] sm:tracking-[0.4em]">
+        {steeringCommittee && (
+          <Reveal delay={0.15} className="mt-8 sm:mt-10">
+            <LeaderCard member={steeringCommittee} featured onViewProfile={onViewProfile} />
+            <p className="mt-4 text-center font-display text-[9px] tracking-[0.4em] text-gold/80 sm:mt-5 sm:text-[10px] sm:tracking-[0.5em]">
               STEERING COMMITTEE
             </p>
-            <p className="mt-2 font-serif text-sm italic text-mist/75 sm:text-base">
-              "Data segera diperbarui."
-            </p>
-          </div>
-        </Reveal>
+          </Reveal>
+        )}
 
         <Reveal delay={0.2} className="mt-14 text-center sm:mt-20">
           <p className="font-display text-[10px] tracking-[0.4em] text-gold/90 sm:text-[11px] sm:tracking-[0.5em]">

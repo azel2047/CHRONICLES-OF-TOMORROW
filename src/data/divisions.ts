@@ -38,6 +38,7 @@ export const divisionIdOf = (divisionName: string) => slugify(divisionName);
 /* Urutan resmi chapter. Divisi baru di data akan otomatis ditambahkan di akhir. */
 const ORDER = [
   "PO",
+  "SC",
   "Bendahara",
   "Sekretaris",
   "Event",
@@ -57,6 +58,11 @@ const META: Record<string, { description: string; icon: LucideIcon }> = {
   PO: {
     description:
       "The council at the helm — steering the whole chronicle from the front.",
+    icon: Crown,
+  },
+  SC: {
+    description:
+      "The guiding compass — overseeing every chapter with wisdom and vision.",
     icon: Crown,
   },
   Bendahara: {
