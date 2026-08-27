@@ -22,12 +22,12 @@
 export interface Member {
   id: string;
   name: string;
-  nickname: string;
+  nickname: string | null;
   gender: string;
   position: string;
   division: string;
   generation: string;
-  domicile: string;
+  domicile: string | null;
   class: string | null;
   photo: string | null;
   bio: string | null;
@@ -344,7 +344,7 @@ export const members: Member[] = [
     generation: "2024",
     domicile: "Depok",
     class: null,
-    photo: null,
+    photo: "/images/members/DInta.png",
     bio: null,
   },
   {
@@ -357,7 +357,7 @@ export const members: Member[] = [
     generation: "2025",
     domicile: "Srengseng Sawah",
     class: null,
-    photo: null,
+    photo: "/images/members/Ntonk.png",
     bio: null,
   },
   {
@@ -370,7 +370,7 @@ export const members: Member[] = [
     generation: "2025",
     domicile: "Depok",
     class: null,
-    photo: null,
+    photo: "/images/members/Rehan.png",
     bio: null,
   },
   {
@@ -488,6 +488,19 @@ export const members: Member[] = [
     domicile: "Jakarta Pusat",
     class: null,
     photo: "/images/members/Aji.png",
+    bio: null,
+  },
+  {
+    id: "36",
+    name: "Muhammad Zack Alfansyah",
+    nickname: null,
+    gender: "Laki-laki",
+    position: "SC",
+    division: "SC",
+    generation: "2025",
+    domicile: null,
+    class: null,
+    photo: "/images/members/Jack.png",
     bio: null,
   },
 ];

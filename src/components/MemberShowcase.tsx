@@ -28,7 +28,7 @@ export function MemberShowcase({
       const matchesQuery =
         q === "" ||
         m.name.toLowerCase().includes(q) ||
-        m.nickname.toLowerCase().includes(q) ||
+        m.nickname?.toLowerCase().includes(q) ||
         m.position.toLowerCase().includes(q) ||
         m.division.toLowerCase().includes(q);
       return inDivision && matchesQuery;
