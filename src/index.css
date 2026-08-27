@@ -82,6 +82,7 @@
 
   body {
     @apply bg-midnight font-sans text-ivory antialiased;
+    overflow-x: hidden;
     background-image: radial-gradient(
       1100px 700px at 50% -10%,
       rgba(111, 85, 165, 0.16),

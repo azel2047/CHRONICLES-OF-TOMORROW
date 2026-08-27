@@ -17,7 +17,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-screen items-center justify-center overflow-hidden"
+      className="relative flex min-h-[100dvh] items-center justify-center overflow-hidden"
     >
       {/* Latar: gradasi radial + vignette */}
       <div
@@ -58,33 +58,33 @@ export function Hero() {
       />
 
       {/* Konten utama */}
-      <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center px-6 pb-28 pt-32 text-center sm:pt-36">
+      <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center px-5 pb-16 pt-24 text-center sm:px-6 sm:pb-28 sm:pt-36">
         <motion.div
-          className="flex items-center gap-3"
+          className="flex items-center gap-2 sm:gap-3"
           initial={{ opacity: 0, y: -12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1, ease }}
         >
-          <Sparkle className="h-3 w-3 text-gold/70" fill="currentColor" />
-          <p className="font-display text-[10px] tracking-[0.55em] text-gold/90 sm:text-xs">
+          <Sparkle className="h-2.5 w-2.5 text-gold/70 sm:h-3 sm:w-3" fill="currentColor" />
+          <p className="font-display text-[9px] tracking-[0.45em] text-gold/90 sm:text-[10px] sm:tracking-[0.55em] md:text-xs">
             THE GRAND CHRONICLE OF
           </p>
-          <Sparkle className="h-3 w-3 text-gold/70" fill="currentColor" />
+          <Sparkle className="h-2.5 w-2.5 text-gold/70 sm:h-3 sm:w-3" fill="currentColor" />
         </motion.div>
 
         <motion.img
           src={logoHorizontal}
           alt="OSJUR 3.0 — Chronicles of Tomorrow logo"
-          className="mt-8 w-full max-w-[300px] object-contain glow-royal sm:max-w-[420px] lg:max-w-[480px]"
+          className="mt-6 w-full max-w-[180px] object-contain glow-royal sm:mt-8 sm:max-w-[300px] md:max-w-[420px] lg:max-w-[480px]"
           initial={{ opacity: 0, y: 24, scale: 0.96 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 1, delay: 0.25, ease }}
         />
 
-        <Ornament className="mt-9 w-full" />
+        <Ornament className="mt-6 w-full sm:mt-9" />
 
         <motion.h1
-          className="text-gold-gradient glow-gold mt-8 font-display text-[clamp(2.6rem,9vw,5.5rem)] font-black leading-none tracking-wide"
+          className="text-gold-gradient glow-gold mt-6 font-display text-[clamp(2rem,8vw,5.5rem)] font-black leading-none tracking-wide sm:mt-8"
           initial={{ opacity: 0, y: 26 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.55, ease }}
@@ -93,7 +93,7 @@ export function Hero() {
         </motion.h1>
 
         <motion.p
-          className="mt-4 pl-[0.5em] font-display text-xs tracking-[0.5em] text-gold/90 sm:text-base md:text-lg"
+          className="mt-3 font-display text-[10px] tracking-[0.3em] text-gold/90 sm:mt-4 sm:pl-[0.5em] sm:text-xs sm:tracking-[0.5em] md:text-base lg:text-lg"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.7, ease }}
@@ -102,7 +102,7 @@ export function Hero() {
         </motion.p>
 
         <motion.p
-          className="mt-6 max-w-xl font-serif text-xl italic text-mist/90 sm:text-2xl"
+          className="mt-5 max-w-lg px-2 font-serif text-base italic text-mist/90 sm:mt-6 sm:text-xl md:text-2xl"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.85, ease }}
@@ -113,7 +113,7 @@ export function Hero() {
         <motion.button
           type="button"
           onClick={scrollToChronicles}
-          className="group mt-11 border border-gold/50 bg-gold/0 px-9 py-4 font-display text-[11px] tracking-[0.35em] text-gold transition-all duration-500 hover:bg-gold hover:text-midnight hover:shadow-[0_0_45px_rgba(216,174,74,0.4)] sm:px-12 sm:text-xs"
+          className="group mt-8 min-h-[48px] border border-gold/50 bg-gold/0 px-7 py-3.5 font-display text-[10px] tracking-[0.3em] text-gold transition-all duration-500 hover:bg-gold hover:text-midnight hover:shadow-[0_0_45px_rgba(216,174,74,0.4)] sm:mt-11 sm:px-12 sm:py-4 sm:text-[11px] sm:tracking-[0.35em] sm:text-xs"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 1, ease }}
@@ -125,7 +125,7 @@ export function Hero() {
         <motion.img
           src={mascotFull}
           alt="Two OSJUR owl mascots in wizard outfits"
-          className="mt-12 w-44 animate-float object-contain lg:hidden"
+          className="mt-10 w-32 animate-float object-contain sm:mt-12 sm:w-44 lg:hidden"
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.1, ease }}

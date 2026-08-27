@@ -20,7 +20,7 @@ function LeaderCard({ member, featured = false, onViewProfile }: LeaderCardProps
   return (
     <div
       className={`group h-full rounded-xl bg-gradient-to-b from-gold/45 via-royal/25 to-royal/10 p-[1px] transition-all duration-500 hover:from-goldbright/70 hover:shadow-[0_25px_60px_-20px_rgba(216,174,74,0.35)] ${
-        featured ? "mx-auto w-full max-w-sm" : ""
+        featured ? "mx-auto w-full max-w-xs sm:max-w-sm" : ""
       }`}
     >
       <article className="flex h-full flex-col overflow-hidden rounded-xl bg-[#161033]">
@@ -31,27 +31,27 @@ function LeaderCard({ member, featured = false, onViewProfile }: LeaderCardProps
             eager={featured}
           />
         </div>
-        <div className="flex flex-1 flex-col p-5 text-center sm:p-6">
-          <p className="font-display text-[10px] uppercase tracking-[0.35em] text-gold">
+        <div className="flex flex-1 flex-col p-4 text-center sm:p-6">
+          <p className="font-display text-[9px] uppercase tracking-[0.3em] text-gold sm:text-[10px] sm:tracking-[0.35em]">
             {member.position}
           </p>
           <h3
-            className={`mt-3 font-display leading-snug text-ivory ${
-              featured ? "text-2xl" : "text-base sm:text-lg"
+            className={`mt-2 font-display leading-snug text-ivory sm:mt-3 ${
+              featured ? "text-xl sm:text-2xl" : "text-sm sm:text-lg"
             }`}
           >
             {member.name}
           </h3>
-          <p className="mt-1.5 font-serif text-sm italic text-gold/80">
+          <p className="mt-1 font-serif text-xs italic text-gold/80 sm:mt-1.5 sm:text-sm">
             "{member.nickname}"
           </p>
-          <p className="mt-2 flex-1 font-display text-[9px] tracking-[0.3em] text-mist/60">
+          <p className="mt-1.5 flex-1 font-display text-[8px] tracking-[0.25em] text-mist/60 sm:mt-2 sm:text-[9px] sm:tracking-[0.3em]">
             {member.division} · ANGKATAN {member.generation}
           </p>
           <button
             type="button"
             onClick={() => onViewProfile(member)}
-            className="mt-5 inline-flex items-center justify-center gap-2 self-center border border-gold/40 px-6 py-2.5 font-display text-[10px] tracking-[0.3em] text-gold transition-all duration-300 hover:bg-gold hover:text-midnight hover:shadow-[0_0_30px_rgba(216,174,74,0.4)]"
+            className="mt-3 inline-flex min-h-[40px] items-center justify-center gap-2 self-center border border-gold/40 px-5 py-2 font-display text-[9px] tracking-[0.25em] text-gold transition-all duration-300 hover:bg-gold hover:text-midnight hover:shadow-[0_0_30px_rgba(216,174,74,0.4)] sm:mt-5 sm:px-6 sm:py-2.5 sm:text-[10px] sm:tracking-[0.3em]"
           >
             VIEW PROFILE
           </button>
@@ -70,8 +70,8 @@ export function Leadership({ onViewProfile }: LeadershipProps) {
     .sort((a, b) => divisionOrder(a.division) - divisionOrder(b.division));
 
   return (
-    <section id="leaders" className="relative scroll-mt-20 py-24 sm:py-32">
-      <div className="mx-auto max-w-6xl px-6 sm:px-8">
+    <section id="leaders" className="relative scroll-mt-20 py-16 sm:py-24 md:py-32">
+      <div className="mx-auto max-w-6xl px-5 sm:px-6 md:px-8">
         <SectionHeading
           folio="FOLIO II"
           title="THE LEADERS"
@@ -79,36 +79,36 @@ export function Leadership({ onViewProfile }: LeadershipProps) {
         />
 
         {officer && (
-          <Reveal delay={0.1} className="mt-16">
+          <Reveal delay={0.1} className="mt-10 sm:mt-16">
             <LeaderCard member={officer} featured onViewProfile={onViewProfile} />
-            <p className="mt-5 text-center font-display text-[10px] tracking-[0.5em] text-gold/80">
+            <p className="mt-4 text-center font-display text-[9px] tracking-[0.4em] text-gold/80 sm:mt-5 sm:text-[10px] sm:tracking-[0.5em]">
               PROJECT OFFICER
             </p>
           </Reveal>
         )}
 
         <Reveal delay={0.15}>
-          <div className="mx-auto mt-8 max-w-sm rounded-xl border border-dashed border-royal/40 bg-deep/30 px-6 py-5 text-center">
-            <p className="font-display text-[10px] tracking-[0.4em] text-mist/60">
+          <div className="mx-auto mt-8 max-w-sm rounded-xl border border-dashed border-royal/40 bg-deep/30 px-5 py-4 text-center sm:px-6 sm:py-5">
+            <p className="font-display text-[9px] tracking-[0.35em] text-mist/60 sm:text-[10px] sm:tracking-[0.4em]">
               STEERING COMMITTEE
             </p>
-            <p className="mt-2 font-serif text-base italic text-mist/75">
+            <p className="mt-2 font-serif text-sm italic text-mist/75 sm:text-base">
               "Data segera diperbarui."
             </p>
           </div>
         </Reveal>
 
-        <Reveal delay={0.2} className="mt-20 text-center">
-          <p className="font-display text-[11px] tracking-[0.5em] text-gold/90">
+        <Reveal delay={0.2} className="mt-14 text-center sm:mt-20">
+          <p className="font-display text-[10px] tracking-[0.4em] text-gold/90 sm:text-[11px] sm:tracking-[0.5em]">
             THE PI COUNCIL
           </p>
-          <h3 className="mt-3 font-display text-2xl text-ivory sm:text-3xl">
+          <h3 className="mt-2 font-display text-xl text-ivory sm:text-2xl md:text-3xl">
             THE GUARDIANS OF EVERY CHAPTER
           </h3>
-          <Ornament className="mt-6" />
+          <Ornament className="mt-5 sm:mt-6" />
         </Reveal>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="mt-8 grid gap-5 sm:mt-12 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">
           {piCouncil.map((member, i) => (
             <Reveal key={member.id} delay={(i % 4) * 0.08}>
               <LeaderCard member={member} onViewProfile={onViewProfile} />

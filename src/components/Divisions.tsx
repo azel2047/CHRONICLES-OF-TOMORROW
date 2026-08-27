@@ -17,7 +17,7 @@ export function Divisions({ onSelect }: DivisionsProps) {
   return (
     <section
       id="divisions"
-      className="relative scroll-mt-20 overflow-hidden py-24 sm:py-32"
+      className="relative scroll-mt-20 overflow-hidden py-16 sm:py-24 md:py-32"
     >
       {/* Cahaya lembut di belakang grid */}
       <div
@@ -29,14 +29,14 @@ export function Divisions({ onSelect }: DivisionsProps) {
         }}
       />
 
-      <div className="relative mx-auto max-w-7xl px-6 sm:px-8">
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-6 md:px-8">
         <SectionHeading
           folio="FOLIO III"
           title="THE CHAPTERS"
           subtitle="Meet the divisions behind OSJUR 3.0."
         />
 
-        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="mt-10 grid gap-4 sm:mt-16 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">
           {divisions.map((division, i) => (
             <Reveal key={division.id} delay={(i % 4) * 0.08}>
               <DivisionCard

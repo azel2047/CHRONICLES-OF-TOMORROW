@@ -38,7 +38,7 @@ export function MemberShowcase({
   return (
     <section
       id="crew"
-      className="relative scroll-mt-20 overflow-hidden py-24 sm:py-32"
+      className="relative scroll-mt-20 overflow-hidden py-16 sm:py-24 md:py-32"
     >
       <div
         className="pointer-events-none absolute inset-0"
@@ -49,18 +49,19 @@ export function MemberShowcase({
         }}
       />
 
-      <div className="relative mx-auto max-w-7xl px-6 sm:px-8">
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-6 md:px-8">
         <SectionHeading
           folio="FOLIO IV"
           title="THE CREW"
           subtitle="Every name inscribed in the chronicle."
         />
 
-        <div className="mt-12">
+        <div className="mt-8 sm:mt-12">
           <SearchBar value={query} onChange={setQuery} />
 
+          {/* Filter pills — horizontal scroll on mobile, wrap on desktop */}
           <div
-            className="mt-8 flex flex-wrap justify-center gap-2.5"
+            className="mt-6 flex gap-2 overflow-x-auto px-1 pb-2 sm:mt-8 sm:flex-wrap sm:justify-center sm:overflow-visible sm:pb-0"
             role="group"
             aria-label="Filter members by division"
           >
@@ -72,7 +73,7 @@ export function MemberShowcase({
                   type="button"
                   onClick={() => onFilterChange(tab.id)}
                   aria-pressed={active}
-                  className={`rounded-full border px-4 py-2 font-display text-[10px] tracking-[0.22em] transition-all duration-300 sm:text-[11px] ${
+                  className={`min-w-max shrink-0 rounded-full border px-3.5 py-2 font-display text-[9px] tracking-[0.2em] transition-all duration-300 sm:min-w-0 sm:px-4 sm:text-[10px] sm:tracking-[0.22em] md:text-[11px] ${
                     active
                       ? "border-gold bg-gold/10 text-gold shadow-[0_0_20px_rgba(216,174,74,0.25)]"
                       : "border-royal/30 text-mist/75 hover:border-gold/50 hover:text-gold"
@@ -84,12 +85,12 @@ export function MemberShowcase({
             })}
           </div>
 
-          <p className="mt-7 text-center font-display text-[10px] tracking-[0.35em] text-mist/50">
+          <p className="mt-5 text-center font-display text-[9px] tracking-[0.3em] text-mist/50 sm:mt-7 sm:text-[10px] sm:tracking-[0.35em]">
             SHOWING {filtered.length} OF {members.length} NAMES
           </p>
         </div>
 
-        <motion.div layout className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <motion.div layout className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">
           <AnimatePresence mode="popLayout">
             {filtered.map((member, i) => (
               <motion.div
@@ -110,13 +111,13 @@ export function MemberShowcase({
               <img
                 src={mascotFull}
                 alt="Two OSJUR owl mascots looking curious"
-                className="w-40 animate-float object-contain opacity-90"
+                className="w-32 animate-float object-contain opacity-90 sm:w-40"
                 loading="lazy"
               />
-              <p className="mt-8 font-serif text-xl italic text-mist/80 sm:text-2xl">
+              <p className="mt-6 font-serif text-lg italic text-mist/80 sm:mt-8 sm:text-xl md:text-2xl">
                 "No names found in the chronicles..."
               </p>
-              <p className="mt-2 text-sm text-mist/55">
+              <p className="mt-2 text-xs text-mist/55 sm:text-sm">
                 Try another name, nickname, position, or division.
               </p>
               <button
@@ -125,7 +126,7 @@ export function MemberShowcase({
                   setQuery("");
                   onFilterChange("all");
                 }}
-                className="mt-7 border border-gold/50 px-7 py-3 font-display text-[10px] tracking-[0.3em] text-gold transition-all duration-300 hover:bg-gold hover:text-midnight"
+                className="mt-6 min-h-[44px] border border-gold/50 px-6 py-3 font-display text-[9px] tracking-[0.25em] text-gold transition-all duration-300 hover:bg-gold hover:text-midnight sm:mt-7 sm:px-7 sm:text-[10px] sm:tracking-[0.3em]"
               >
                 RESET THE SEARCH
               </button>

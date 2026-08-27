@@ -16,27 +16,27 @@ export function MemberCard({ member, onViewProfile }: MemberCardProps) {
         />
       </div>
 
-      <div className="p-5 text-center">
-        <h3 className="font-display text-sm leading-snug text-ivory sm:text-base">
+      <div className="p-4 text-center sm:p-5">
+        <h3 className="font-display text-xs leading-snug text-ivory sm:text-sm md:text-base">
           {member.name}
         </h3>
-        <p className="mt-1 font-serif text-sm italic text-gold/85">
+        <p className="mt-1 font-serif text-xs italic text-gold/85 sm:text-sm">
           "{member.nickname}"
         </p>
-        <p className="mt-2 font-display text-[10px] uppercase tracking-[0.3em] text-gold">
+        <p className="mt-1.5 font-display text-[8px] uppercase tracking-[0.25em] text-gold sm:text-[10px] sm:tracking-[0.3em]">
           {member.position}
         </p>
-        <p className="mt-1.5 font-display text-[9px] tracking-[0.25em] text-mist/65">
+        <p className="mt-1 font-display text-[8px] tracking-[0.2em] text-mist/65 sm:text-[9px] sm:tracking-[0.25em]">
           {member.division}
         </p>
-        <p className="mt-0.5 font-display text-[9px] tracking-[0.25em] text-mist/40">
+        <p className="mt-0.5 font-display text-[8px] tracking-[0.2em] text-mist/40 sm:text-[9px] sm:tracking-[0.25em]">
           ANGKATAN {member.generation}
         </p>
         <button
           type="button"
           onClick={() => onViewProfile(member)}
           aria-label={`View profile of ${member.name}`}
-          className="mt-4 w-full border border-royal/40 py-2.5 font-display text-[10px] tracking-[0.3em] text-mist transition-all duration-300 hover:border-gold hover:bg-gold/5 hover:text-gold"
+          className="mt-3 min-h-[40px] w-full border border-royal/40 py-2 font-display text-[9px] tracking-[0.25em] text-mist transition-all duration-300 hover:border-gold hover:bg-gold/5 hover:text-gold sm:mt-4 sm:py-2.5 sm:text-[10px] sm:tracking-[0.3em]"
         >
           VIEW PROFILE
         </button>
