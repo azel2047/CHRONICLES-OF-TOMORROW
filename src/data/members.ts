@@ -497,7 +497,7 @@ export const members: Member[] = [
     gender: "Laki-laki",
     position: "SC",
     division: "SC",
-    generation: "2025",
+    generation: "2023",
     domicile: null,
     class: null,
     photo: "/images/members/Jack.webp",
