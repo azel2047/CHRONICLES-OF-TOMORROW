@@ -1,6 +1,8 @@
+import { useMemo } from "react";
 import { divisions } from "../data/divisions";
 import { members } from "../data/members";
 import type { Member } from "../data/members";
+import { useSectionPreload } from "../hooks/useSectionPreload";
 import { MemberPhoto } from "./MemberPhoto";
 import { Ornament } from "./Ornament";
 import { Reveal } from "./Reveal";
@@ -80,12 +82,32 @@ export function Leadership({ onViewProfile }: LeadershipProps) {
   const steeringCommittee = members.find((m) => m.position === "SC");
   const divisionOrder = (name: string) =>
     divisions.findIndex((d) => d.name === name);
-  const piCouncil = members
-    .filter((m) => m.position === "PI")
-    .sort((a, b) => divisionOrder(a.division) - divisionOrder(b.division));
+  const piCouncil = useMemo(
+    () =>
+      members
+        .filter((m) => m.position === "PI")
+        .sort((a, b) => divisionOrder(a.division) - divisionOrder(b.division)),
+    []
+  );
+
+  const leaderPhotos = useMemo(
+    () =>
+      [
+        steeringCommittee?.photo,
+        officer?.photo,
+        ...piCouncil.map((m) => m.photo),
+      ].filter(Boolean) as string[],
+    [steeringCommittee, officer, piCouncil]
+  );
+
+  const sectionRef = useSectionPreload(leaderPhotos, "400px 0px");
 
   return (
-    <section id="leaders" className="relative scroll-mt-20 overflow-hidden py-16 sm:py-24 md:py-32">
+    <section
+      ref={sectionRef}
+      id="leaders"
+      className="relative scroll-mt-20 overflow-hidden py-16 sm:py-24 md:py-32"
+    >
       {/* Background Character Atmosphere */}
       <div
         className="pointer-events-none absolute inset-0"

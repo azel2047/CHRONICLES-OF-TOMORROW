@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { allChapterTabs, divisionIdOf } from "../data/divisions";
 import { members } from "../data/members";
 import type { Member } from "../data/members";
+import { useSectionPreload } from "../hooks/useSectionPreload";
 import mascotFull from "../assets/mascot.png";
 import { MemberCard } from "./MemberCard";
 import { SearchBar } from "./SearchBar";
@@ -35,8 +36,15 @@ export function MemberShowcase({
     });
   }, [filter, query]);
 
+  const crewPhotos = useMemo(
+    () => members.map((m) => m.photo).filter(Boolean) as string[],
+    []
+  );
+  const sectionRef = useSectionPreload(crewPhotos, "400px 0px");
+
   return (
     <section
+      ref={sectionRef}
       id="crew"
       className="relative scroll-mt-20 overflow-hidden py-16 sm:py-24 md:py-32"
     >

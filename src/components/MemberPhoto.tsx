@@ -29,6 +29,7 @@ export function MemberPhoto({
   eager = false,
 }: MemberPhotoProps) {
   const [failed, setFailed] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   if (member.photo === null || failed) {
     return (
@@ -52,10 +53,15 @@ export function MemberPhoto({
     <img
       src={member.photo}
       alt={`Portrait of ${member.name}`}
+      width={640}
+      height={800}
       loading={eager ? "eager" : "lazy"}
       decoding="async"
+      onLoad={() => setIsLoaded(true)}
       onError={() => setFailed(true)}
-      className={`object-cover ${className} ${imgClassName}`}
+      className={`object-cover transition-opacity duration-300 ${
+        isLoaded ? "opacity-100" : "opacity-0"
+      } ${className} ${imgClassName}`}
     />
   );
 }
