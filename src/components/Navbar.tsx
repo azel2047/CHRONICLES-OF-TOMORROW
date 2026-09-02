@@ -16,8 +16,17 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
+    let lastScrolled = window.scrollY > 24;
+    setScrolled(lastScrolled);
+
+    const onScroll = () => {
+      const isScrolled = window.scrollY > 24;
+      if (isScrolled !== lastScrolled) {
+        lastScrolled = isScrolled;
+        setScrolled(isScrolled);
+      }
+    };
+
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -34,7 +43,7 @@ export function Navbar() {
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "border-b border-gold/20 bg-midnight/80 shadow-[0_10px_40px_rgba(0,0,0,0.4)] backdrop-blur-md"
+            ? "border-b border-gold/25 bg-midnight/85 shadow-[0_10px_40px_rgba(0,0,0,0.6)] backdrop-blur-xl"
             : "border-b border-transparent bg-transparent"
         }`}
       >
@@ -42,12 +51,12 @@ export function Navbar() {
           <a
             href="#top"
             aria-label="OSJUR 3.0 — back to top"
-            className="flex items-center transition-opacity hover:opacity-80"
+            className="group flex items-center transition-transform duration-300 hover:scale-[1.02]"
           >
             <img
               src={logoHorizontal}
               alt="OSJUR 3.0 — Chronicles of Tomorrow logo"
-              className="h-9 w-auto object-contain sm:h-11"
+              className="h-9 w-auto object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)] transition-all duration-300 group-hover:drop-shadow-[0_0_20px_rgba(216,174,74,0.5)] sm:h-11"
             />
           </a>
 
@@ -56,10 +65,10 @@ export function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="group relative font-display text-[12px] tracking-[0.3em] text-mist transition-colors duration-300 hover:text-gold"
+                className="group relative py-1 font-display text-[12px] font-semibold tracking-[0.3em] text-mist/85 transition-colors duration-300 hover:text-goldbright"
               >
                 {link.label}
-                <span className="absolute -bottom-1.5 left-0 h-px w-full origin-left scale-x-0 bg-gold transition-transform duration-300 group-hover:scale-x-100" />
+                <span className="absolute -bottom-1 left-0 h-[2px] w-full origin-left scale-x-0 bg-gradient-to-r from-gold to-goldbright shadow-[0_0_12px_rgba(216,174,74,0.8)] transition-transform duration-300 group-hover:scale-x-100" />
               </a>
             ))}
           </nav>
@@ -69,7 +78,7 @@ export function Navbar() {
             onClick={() => setOpen(true)}
             aria-label="Open menu"
             aria-expanded={open}
-            className="flex h-11 w-11 items-center justify-center rounded border border-royal/40 text-mist transition-colors hover:border-gold/60 hover:text-gold md:hidden"
+            className="flex h-11 w-11 items-center justify-center rounded-lg border border-royal/40 bg-royal/10 text-mist transition-colors hover:border-gold/60 hover:text-gold md:hidden"
           >
             <Menu className="h-5 w-5" />
           </button>
@@ -86,7 +95,7 @@ export function Navbar() {
             transition={{ duration: 0.25 }}
           >
             <div
-              className="absolute inset-0 bg-abyss/80 backdrop-blur-sm"
+              className="absolute inset-0 bg-abyss/80 backdrop-blur-md"
               onClick={() => setOpen(false)}
               aria-hidden="true"
             />
@@ -94,7 +103,7 @@ export function Navbar() {
               role="dialog"
               aria-modal="true"
               aria-label="Menu"
-              className="absolute right-0 top-0 flex h-full w-[80%] max-w-xs flex-col border-l border-gold/25 bg-deep/95 p-8 backdrop-blur-xl"
+              className="absolute right-0 top-0 flex h-full w-[80%] max-w-xs flex-col border-l border-gold/25 bg-deep/95 p-8 shadow-[0_0_50px_rgba(0,0,0,0.8)] backdrop-blur-2xl"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
@@ -111,7 +120,7 @@ export function Navbar() {
                   type="button"
                   onClick={() => setOpen(false)}
                   aria-label="Close menu"
-                  className="flex h-10 w-10 items-center justify-center rounded border border-royal/40 text-mist transition-colors hover:border-gold/60 hover:text-gold"
+                  className="flex h-10 w-10 items-center justify-center rounded-lg border border-royal/40 bg-royal/10 text-mist transition-colors hover:border-gold/60 hover:text-gold"
                 >
                   <X className="h-5 w-5" />
                 </button>

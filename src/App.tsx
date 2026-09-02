@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import { Closing } from "./components/Closing";
 import { Chronicles } from "./components/Chronicles";
-import { Divisions } from "./components/Divisions";
+import { HorizontalChapters } from "./components/HorizontalChapters";
 import { Footer } from "./components/Footer";
 import { Hero } from "./components/Hero";
 import { Leadership } from "./components/Leadership";
@@ -30,13 +30,13 @@ export default function App() {
   }, []);
 
   return (
-    <div className="relative min-h-screen overflow-x-clip">
+    <div className="relative min-h-screen overflow-x-clip bg-midnight selection:bg-gold/30 selection:text-ivory">
       <Navbar />
       <main>
         <Hero />
         <Chronicles />
+        <HorizontalChapters onSelect={selectDivision} />
         <Leadership onViewProfile={openProfile} />
-        <Divisions onSelect={selectDivision} />
         <MemberShowcase
           filter={divisionFilter}
           onFilterChange={setDivisionFilter}

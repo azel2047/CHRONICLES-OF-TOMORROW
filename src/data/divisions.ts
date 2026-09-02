@@ -37,8 +37,8 @@ export const divisionIdOf = (divisionName: string) => slugify(divisionName);
 
 /* Urutan resmi chapter. Divisi baru di data akan otomatis ditambahkan di akhir. */
 const ORDER = [
-  "PO",
   "SC",
+  "PO",
   "Bendahara",
   "Sekretaris",
   "Event",
@@ -53,70 +53,62 @@ const ORDER = [
   "Mentor",
 ];
 
-/* Ikon + deskripsi per divisi (flavor text, bukan data member). */
+/* Ikon + deskripsi per divisi (ringkas, informatif, dan profesional). */
 const META: Record<string, { description: string; icon: LucideIcon }> = {
-  PO: {
-    description:
-      "The council at the helm — steering the whole chronicle from the front.",
+  SC: {
+    description: "Pengarah & penasihat utama strategi pelaksanaan OSJUR 3.0.",
     icon: Crown,
   },
-  SC: {
-    description:
-      "The guiding compass — overseeing every chapter with wisdom and vision.",
+  PO: {
+    description: "Pimpinan pelaksana dan penanggung jawab operasional kegiatan.",
     icon: Crown,
   },
   Bendahara: {
-    description: "Stewards of the treasury that fuels the whole journey.",
+    description: "Pengelola anggaran, permodalan, dan transparansi keuangan acara.",
     icon: Coins,
   },
   Sekretaris: {
-    description:
-      "Keepers of letters, records, and the sacred minutes of the council.",
+    description: "Pencatatan administrasi, persuratan, notulensi, dan arsip kepanitiaan.",
     icon: ScrollText,
   },
   Event: {
-    description:
-      "The architects of the grand occasion — every agenda and moment, orchestrated.",
+    description: "Perancang konsep acara, rundown waktu, dan eksekusi panggung.",
     icon: CalendarDays,
   },
   Humas: {
-    description: "Voices and bridges — carrying the story beyond the hall.",
+    description: "Penghubung komunikasi eksternal, koordinasi peserta, dan informasi.",
     icon: Megaphone,
   },
   "IT Support": {
-    description: "Masters of the arcane machines that keep the story running.",
+    description: "Pengembang platform web, sistem digital, dan infrastruktur teknis.",
     icon: Cpu,
   },
   Kedisiplinan: {
-    description: "The silent wardens who keep order within the chronicle.",
+    description: "Penjaga ketertiban, tata tertib, dan pengkondisian forum acara.",
     icon: Gavel,
   },
   Konsumsi: {
-    description:
-      "Providers of feast and refreshment for every traveler of the tale.",
+    description: "Penyedia logistik konsumsi dan hidangan seluruh panitia & peserta.",
     icon: UtensilsCrossed,
   },
   Kreatif: {
-    description:
-      "The artists who breathe visual soul into every page of the chronicle.",
+    description: "Perancang visual identitas, dekorasi tema, dan materi artistik.",
     icon: Palette,
   },
   Logistik: {
-    description:
-      "Bearers of the great cargo — every prop and provision, delivered.",
+    description: "Pengadaan perlengkapan, operasional venue, dan distribusi sarana.",
     icon: Package,
   },
   "Media Kreatif": {
-    description:
-      "Chroniclers of light and lens, capturing every chapter as it unfolds.",
+    description: "Dokumentasi fotografi, videografi, dan publikasi konten sosial.",
     icon: Camera,
   },
   Medis: {
-    description: "Guardians of wellbeing, ready for every twist of the tale.",
+    description: "Pertolongan pertama, kesehatan panitia, dan kesiapsiagaan darurat.",
     icon: HeartPulse,
   },
   Mentor: {
-    description: "The guiding elders who light the path for every member.",
+    description: "Pendamping, fasilitator kelompok, dan pembimbing mahasiswa baru.",
     icon: GraduationCap,
   },
 };

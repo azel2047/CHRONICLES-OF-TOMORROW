@@ -1,4 +1,4 @@
-﻿/* ============================================================
+/* ============================================================
    DATA PANITIA OSJUR 3.0 - CHRONICLES OF TOMORROW
    Sumber resmi: "Data Panitia OSJUR 3.0 (Jawaban) - Form Responses 1.pdf"
    ------------------------------------------------------------
@@ -318,7 +318,7 @@ export const members: Member[] = [
     generation: "2025",
     domicile: "Srengseng Sawah, Jakarta Selatan",
     class: null,
-    photo: null,
+    photo: "/images/members/Hussein.webp",
     bio: null,
   },
   {
@@ -501,6 +501,58 @@ export const members: Member[] = [
     domicile: null,
     class: null,
     photo: "/images/members/Jack.webp",
+    bio: null,
+  },
+  {
+    id: "37",
+    name: "Salman Maula Ash-Shidqi",
+    nickname: "Salman",
+    gender: "Laki-laki",
+    position: "Staff",
+    division: "IT Support",
+    generation: "2025",
+    domicile: null,
+    class: null,
+    photo: "/images/members/Salman.webp",
+    bio: null,
+  },
+  {
+    id: "38",
+    name: "Dhiya Nailah Rizqya",
+    nickname: "Qya",
+    gender: "Perempuan",
+    position: "Staff",
+    division: "Kedisiplinan",
+    generation: "2025",
+    domicile: null,
+    class: null,
+    photo: "/images/members/Qya.webp",
+    bio: null,
+  },
+  {
+    id: "39",
+    name: "Raveska Hinayah",
+    nickname: "Vava",
+    gender: "Perempuan",
+    position: "Staff",
+    division: "Media Kreatif",
+    generation: "2025",
+    domicile: null,
+    class: null,
+    photo: "/images/members/Vava.webp",
+    bio: null,
+  },
+  {
+    id: "40",
+    name: "Mutia Rahma Amaliyah",
+    nickname: "Mutie",
+    gender: "Perempuan",
+    position: "Staff",
+    division: "Mentor",
+    generation: "2025",
+    domicile: null,
+    class: null,
+    photo: "/images/members/Mutie.webp",
     bio: null,
   },
 ];

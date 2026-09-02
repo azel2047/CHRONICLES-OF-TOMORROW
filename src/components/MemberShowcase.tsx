@@ -101,7 +101,7 @@ export function MemberShowcase({
                 exit={{ opacity: 0, scale: 0.94 }}
                 transition={{ duration: 0.35, delay: i * 0.03 }}
               >
-                <MemberCard member={member} onViewProfile={onViewProfile} />
+                <MemberCard member={member} cardIndex={i} onViewProfile={onViewProfile} />
               </motion.div>
             ))}
           </AnimatePresence>

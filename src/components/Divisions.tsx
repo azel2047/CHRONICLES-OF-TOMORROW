@@ -33,16 +33,16 @@ export function Divisions({ onSelect }: DivisionsProps) {
         <SectionHeading
           folio="FOLIO III"
           title="THE CHAPTERS"
-          subtitle="Meet the divisions behind OSJUR 3.0."
+          subtitle="Struktur 14 divisi dan 40 panitia yang menggerakkan setiap agenda OSJUR 3.0."
         />
 
-        <div className="mt-10 grid gap-4 sm:mt-16 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="mt-10 grid gap-5 sm:mt-16 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">
           {divisions.map((division, i) => (
             <Reveal key={division.id} delay={(i % 4) * 0.08}>
               <DivisionCard
                 division={division}
                 memberCount={countMembers(division.id)}
-                isCouncil={division.id === "po"}
+                isCouncil={division.id === "sc" || division.id === "po"}
                 onSelect={onSelect}
               />
             </Reveal>
