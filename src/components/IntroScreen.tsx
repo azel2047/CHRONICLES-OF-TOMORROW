@@ -79,7 +79,7 @@ export function IntroScreen() {
       {/* Background Video */}
       <video
         ref={videoRef}
-        src="/intro/sombilis.mp4"
+        src="/intro/sombilis-web.mp4"
         poster="/intro/poster.webp"
         muted
         playsInline
