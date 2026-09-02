@@ -27,6 +27,8 @@ export function IntroScreen() {
     // Smooth cinematic fade out
     window.setTimeout(() => {
       setIsVisible(false);
+      delete document.documentElement.dataset.intro;
+      window.dispatchEvent(new CustomEvent("osjur:intro-end"));
       if (videoRef.current) {
         videoRef.current.pause();
         videoRef.current.removeAttribute("src");
@@ -37,7 +39,14 @@ export function IntroScreen() {
   }, [isExiting]);
 
   useEffect(() => {
-    if (!isVisible) return;
+    if (!isVisible) {
+      delete document.documentElement.dataset.intro;
+      return;
+    }
+
+    // Mark global intro state as active for CSS and background animations
+    document.documentElement.dataset.intro = "active";
+    window.dispatchEvent(new CustomEvent("osjur:intro-start"));
 
     // Check prefers-reduced-motion
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -62,6 +71,7 @@ export function IntroScreen() {
     }
 
     return () => {
+      delete document.documentElement.dataset.intro;
       document.body.style.overflow = "";
     };
   }, [isVisible, handleFinish]);

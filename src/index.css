@@ -154,3 +154,13 @@
     filter: drop-shadow(0 0 42px rgba(111, 85, 165, 0.45));
   }
 }
+
+/* ── Prioritize Video Playback during Intro ───────────── */
+html[data-intro="active"] .animate-twinkle,
+html[data-intro="active"] .animate-float,
+html[data-intro="active"] .animate-float-delayed,
+html[data-intro="active"] .animate-pulse-soft,
+html[data-intro="active"] .animate-scroll-cue {
+  animation-play-state: paused !important;
+}
+

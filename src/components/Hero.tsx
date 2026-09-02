@@ -91,7 +91,13 @@ export function Hero() {
 
   // ── Mouse Move Handler on Hero Scene ─────────────────────
   const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
-    if (isTouchDevice || prefersReducedMotion) return;
+    if (
+      isTouchDevice ||
+      prefersReducedMotion ||
+      document.documentElement.dataset.intro === "active"
+    ) {
+      return;
+    }
 
     const rect = e.currentTarget.getBoundingClientRect();
     const x = ((e.clientX - rect.left) / rect.width) * 2 - 1; // -1 to 1
