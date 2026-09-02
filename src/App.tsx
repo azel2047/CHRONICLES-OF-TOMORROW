@@ -4,6 +4,7 @@ import { Chronicles } from "./components/Chronicles";
 import { HorizontalChapters } from "./components/HorizontalChapters";
 import { Footer } from "./components/Footer";
 import { Hero } from "./components/Hero";
+import { IntroScreen } from "./components/IntroScreen";
 import { Leadership } from "./components/Leadership";
 import { MemberModal } from "./components/MemberModal";
 import { MemberShowcase } from "./components/MemberShowcase";
@@ -31,6 +32,7 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen overflow-x-clip bg-midnight selection:bg-gold/30 selection:text-ivory">
+      <IntroScreen />
       <Navbar />
       <main>
         <Hero />
