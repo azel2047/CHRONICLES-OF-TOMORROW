@@ -1,8 +1,8 @@
-import { useRef, useState, useEffect } from "react";
+import { useMemo, useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Sparkle, ArrowUpRight, Users } from "lucide-react";
 import { divisions, divisionIdOf } from "../data/divisions";
-import { members } from "../data/members";
+import { members, type Member } from "../data/members";
 import { SectionHeading } from "./SectionHeading";
 
 interface HorizontalChaptersProps {
@@ -10,16 +10,31 @@ interface HorizontalChaptersProps {
 }
 
 /**
- * 60FPS Pure Hardware-Accelerated Horizontal Chapters
- * - ONE Sticky Container
- * - ONE Horizontal Track
- * - Zero blur filters on moving cards (replaced with fast static radial gradients)
- * - Cached numeric translation for zero layout thrashing
+ * High-Performance Hardware-Accelerated Horizontal Chapters
+ * - ONE Sticky Viewport
+ * - ONE Horizontal Motion Track (GPU translate3d)
+ * - Static lightweight card styling (low compositing & rasterization cost)
+ * - Precomputed division members lookup
+ * - Lazy & async decoded avatar previews
  */
 export function HorizontalChapters({ onSelect }: HorizontalChaptersProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const [maxDistance, setMaxDistance] = useState(4200);
+
+  // Precompute members mapped by division ID once (zero filtering per render)
+  const membersByDivision = useMemo(() => {
+    const map: Record<string, Member[]> = {};
+    for (let i = 0; i < members.length; i++) {
+      const m = members[i];
+      const divId = divisionIdOf(m.division);
+      if (!map[divId]) {
+        map[divId] = [];
+      }
+      map[divId].push(m);
+    }
+    return map;
+  }, []);
 
   // Hitung & cache jarak horizontal saat mount dan resize
   useEffect(() => {
@@ -57,7 +72,7 @@ export function HorizontalChapters({ onSelect }: HorizontalChaptersProps) {
     >
       {/* Sticky Viewport yang mengunci layar */}
       <div className="sticky top-0 flex h-screen w-full flex-col justify-between overflow-hidden px-4 py-8 sm:px-8 sm:py-12">
-        {/* Background Haze Statis (0% render cost) */}
+        {/* Background Haze Statis (Single shared atmospheric background on stage) */}
         <div
           className="pointer-events-none absolute inset-0"
           style={{
@@ -82,7 +97,7 @@ export function HorizontalChapters({ onSelect }: HorizontalChaptersProps) {
             </span>
             <div className="relative h-1 flex-1 overflow-hidden rounded-full bg-royal/20 border border-royal/30">
               <motion.div
-                className="h-full bg-gradient-to-r from-gold to-goldbright shadow-[0_0_10px_rgba(216,174,74,0.8)]"
+                className="h-full bg-gradient-to-r from-gold to-goldbright shadow-[0_0_8px_rgba(216,174,74,0.6)]"
                 style={{ scaleX: scrollYProgress, transformOrigin: "left" }}
               />
             </div>
@@ -104,9 +119,7 @@ export function HorizontalChapters({ onSelect }: HorizontalChaptersProps) {
             {divisions.map((division, idx) => {
               const Icon = division.icon;
               const isCouncil = division.id === "sc" || division.id === "po";
-              const divisionMembers = members.filter(
-                (m) => divisionIdOf(m.division) === division.id
-              );
+              const divisionMembers = membersByDivision[division.id] ?? [];
               const previewMembers = divisionMembers.slice(0, 3);
               const extraCount = divisionMembers.length - previewMembers.length;
 
@@ -117,15 +130,11 @@ export function HorizontalChapters({ onSelect }: HorizontalChaptersProps) {
                   className="w-[85vw] max-w-[380px] shrink-0 sm:w-[420px] lg:w-[460px] cursor-pointer"
                 >
                   <div
-                    className={`group relative flex h-[380px] sm:h-[420px] flex-col justify-between overflow-hidden rounded-2xl border p-6 sm:p-8 transition-transform duration-300 hover:-translate-y-1.5 ${
+                    className={`group relative flex h-[380px] sm:h-[420px] flex-col justify-between overflow-hidden rounded-2xl border p-6 sm:p-8 transition-transform duration-300 sm:hover:-translate-y-1.5 shadow-[0_4px_20px_rgba(0,0,0,0.4)] ${
                       isCouncil
-                        ? "border-gold/50 bg-gradient-to-b from-[#281a54]/95 via-[#1a103c]/95 to-[#0e0725]/95 shadow-[0_15px_35px_rgba(0,0,0,0.6)] hover:border-goldbright"
-                        : "border-royal/35 bg-gradient-to-b from-[#1e1446]/90 via-[#150d36]/90 to-[#0c0620]/95 shadow-[0_15px_35px_rgba(0,0,0,0.5)] hover:border-gold/70"
+                        ? "border-gold/50 bg-gradient-to-b from-[#25174e] via-[#180e38] to-[#0c0620] hover:border-goldbright"
+                        : "border-royal/35 bg-gradient-to-b from-[#1c1240] via-[#130b30] to-[#0a051c] hover:border-gold/70"
                     }`}
-                    style={{
-                      backgroundImage:
-                        "radial-gradient(circle at top right, rgba(216,174,74,0.12) 0%, transparent 60%)",
-                    }}
                   >
                     {/* Card Content Top */}
                     <div>
@@ -178,8 +187,11 @@ export function HorizontalChapters({ onSelect }: HorizontalChaptersProps) {
                                   <img
                                     src={m.photo}
                                     alt={m.name}
+                                    width={32}
+                                    height={32}
                                     className="h-full w-full object-cover"
                                     loading="lazy"
+                                    decoding="async"
                                   />
                                 ) : (
                                   <div className="flex h-full w-full items-center justify-center bg-royal/40 text-[10px] font-bold text-gold">
