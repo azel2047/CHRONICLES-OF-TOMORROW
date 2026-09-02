@@ -4,7 +4,7 @@ import { Chronicles } from "./components/Chronicles";
 import { HorizontalChapters } from "./components/HorizontalChapters";
 import { Footer } from "./components/Footer";
 import { Hero } from "./components/Hero";
-import { IntroScreen } from "./components/IntroScreen";
+import { IntroScreen, checkShouldShowIntro } from "./components/IntroScreen";
 import { Leadership } from "./components/Leadership";
 import { MemberModal } from "./components/MemberModal";
 import { MemberShowcase } from "./components/MemberShowcase";
@@ -12,6 +12,8 @@ import { Navbar } from "./components/Navbar";
 import type { Member } from "./data/members";
 
 export default function App() {
+  const [shouldShowIntro, setShouldShowIntro] = useState(() => checkShouldShowIntro());
+  const [isMainMounted, setIsMainMounted] = useState(() => !checkShouldShowIntro());
   const [activeMember, setActiveMember] = useState<Member | null>(null);
   const [divisionFilter, setDivisionFilter] = useState("all");
 
@@ -30,24 +32,44 @@ export default function App() {
     }, 60);
   }, []);
 
+  // When intro begins its 950ms fade out, mount the main website underneath so there is 0 flash
+  const handleIntroStartExit = useCallback(() => {
+    setIsMainMounted(true);
+  }, []);
+
+  const handleIntroFinish = useCallback(() => {
+    setShouldShowIntro(false);
+  }, []);
+
   return (
     <div className="relative min-h-screen overflow-x-clip bg-midnight selection:bg-gold/30 selection:text-ivory">
-      <IntroScreen />
-      <Navbar />
-      <main>
-        <Hero />
-        <Chronicles />
-        <HorizontalChapters onSelect={selectDivision} />
-        <Leadership onViewProfile={openProfile} />
-        <MemberShowcase
-          filter={divisionFilter}
-          onFilterChange={setDivisionFilter}
-          onViewProfile={openProfile}
+      {shouldShowIntro && (
+        <IntroScreen
+          onStartExit={handleIntroStartExit}
+          onFinish={handleIntroFinish}
         />
-        <Closing />
-      </main>
-      <Footer />
-      <MemberModal member={activeMember} onClose={closeProfile} />
+      )}
+
+      {isMainMounted && (
+        <>
+          <Navbar />
+          <main>
+            <Hero />
+            <Chronicles />
+            <HorizontalChapters onSelect={selectDivision} />
+            <Leadership onViewProfile={openProfile} />
+            <MemberShowcase
+              filter={divisionFilter}
+              onFilterChange={setDivisionFilter}
+              onViewProfile={openProfile}
+            />
+            <Closing />
+          </main>
+          <Footer />
+          <MemberModal member={activeMember} onClose={closeProfile} />
+        </>
+      )}
     </div>
   );
 }
+

@@ -1,15 +1,21 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
-export function IntroScreen() {
-  const [isVisible, setIsVisible] = useState(() => {
-    if (typeof window === "undefined") return false;
-    const params = new URLSearchParams(window.location.search);
-    if (params.get("intro") === "1" || params.get("intro") === "true") {
-      return true;
-    }
-    return sessionStorage.getItem("osjur_intro_seen") !== "true";
-  });
+export function checkShouldShowIntro(): boolean {
+  if (typeof window === "undefined") return false;
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("intro") === "1" || params.get("intro") === "true") {
+    return true;
+  }
+  return sessionStorage.getItem("osjur_intro_seen") !== "true";
+}
 
+interface IntroScreenProps {
+  onStartExit?: () => void;
+  onFinish?: () => void;
+}
+
+export function IntroScreen({ onStartExit, onFinish }: IntroScreenProps) {
+  const [isVisible, setIsVisible] = useState(() => checkShouldShowIntro());
   const [isLoaded, setIsLoaded] = useState(false);
   const [isExiting, setIsExiting] = useState(false);
   const [autoplayBlocked, setAutoplayBlocked] = useState(false);
@@ -18,6 +24,9 @@ export function IntroScreen() {
   const handleFinish = useCallback(() => {
     if (isExiting) return;
     setIsExiting(true);
+    if (onStartExit) {
+      onStartExit();
+    }
     try {
       sessionStorage.setItem("osjur_intro_seen", "true");
     } catch {
@@ -29,6 +38,9 @@ export function IntroScreen() {
       setIsVisible(false);
       delete document.documentElement.dataset.intro;
       window.dispatchEvent(new CustomEvent("osjur:intro-end"));
+      if (onFinish) {
+        onFinish();
+      }
       if (videoRef.current) {
         videoRef.current.pause();
         videoRef.current.removeAttribute("src");
@@ -36,7 +48,7 @@ export function IntroScreen() {
       }
       document.body.style.overflow = "";
     }, 950);
-  }, [isExiting]);
+  }, [isExiting, onStartExit, onFinish]);
 
   useEffect(() => {
     if (!isVisible) {
