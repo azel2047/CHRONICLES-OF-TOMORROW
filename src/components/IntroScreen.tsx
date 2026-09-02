@@ -80,14 +80,15 @@ export function IntroScreen() {
       <video
         ref={videoRef}
         src="/intro/sombilis.mp4"
+        poster="/intro/poster.webp"
         muted
         playsInline
         autoPlay
-        preload="auto"
+        preload="metadata"
         onLoadedData={() => setIsLoaded(true)}
         onCanPlay={() => setIsLoaded(true)}
         onEnded={handleFinish}
-        className={`h-full w-full object-cover transition-opacity duration-700 ${
+        className={`h-full w-full object-cover transition-opacity duration-500 ${
           isLoaded ? "opacity-100" : "opacity-0"
         }`}
       />
